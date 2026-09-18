@@ -15,7 +15,7 @@ Program components:
   `~/Library/Application Support/SmallerPlease/bin/{smaller,contextslim}` with the ownership
   marker `bin/.smaller-core.json` (created by the installer app, independent of any Homebrew
   copy);
-- the installer app itself (`Smaller Please Installer.app`), wherever the user put it;
+- the installer app itself (`Smaller Please.app`), wherever the user put it;
 - the native host launcher `~/.contextslim-bridge/native/contextslim-native-host` (an independent
   copy of the binary, never a symlink into a Homebrew Cellar);
 - the Chrome host manifest
@@ -122,7 +122,7 @@ The sheet also explains that the `contextslim_*` Chrome storage is only removabl
 **Remove**, and that a Homebrew installation is kept (`brew uninstall smaller-please` is
 suggested, never run by the GUI). After uninstall the app refreshes to **Not installed**
 (connection **Not configured**) and shows the retained settings/cache separately — not as
-corruption. The installer app bundle itself is removed by dragging `Smaller Please Installer.app`
+corruption. The installer app bundle itself is removed by dragging `Smaller Please.app`
 to the Trash.
 
 ## Chrome extension: the final manual `Remove`

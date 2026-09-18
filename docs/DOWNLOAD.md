@@ -29,9 +29,9 @@ downloads from a source you trust.
 
 ## 2. Open the installer
 
-1. Double-click the downloaded `.dmg` file. A window opens. It also contains the same install
-   guide as `README.txt` (English) and `README.zh-CN.txt` (Simplified Chinese).
-2. Double-click **Smaller Please Installer.app** inside that window.
+1. Double-click the downloaded `.dmg` file. A window opens. It also contains a plain-text
+   install guide, `README.txt`.
+2. Double-click **Smaller Please.app** inside that window.
 3. If macOS says the app cannot be opened because it is from an unidentified developer, this
    means the build you downloaded was not notarized. For the signed and notarized Beta.2 DMG
    this warning should not appear; if you do see it on an older build, right-click (or

@@ -31,7 +31,7 @@ The first publicly distributed Smaller, Please beta, for **macOS Apple Silicon (
   a marker-validated managed store with cache/dedupe and storage statistics, and `clean`.
 - **Media Engine** — the optional LGPL-only Media Pack (FFmpeg 7.1, macOS arm64, VideoToolbox
   H.264 + native AAC), with automatic fallback to an existing Homebrew/system FFmpeg.
-- **macOS installer** — a `Smaller Please Installer.app` + DMG that installs Core, the extension
+- **macOS installer** — a `Smaller Please.app` installer + DMG that installs Core, the extension
   bundle, and the Media Pack user-level (no `sudo`), and supports overwrite/upgrade.
 - **Languages** — English + Simplified Chinese in the installer and extension (Follow system).
 - **Diagnostics and repair** — `smaller doctor`, `smaller setup`, `smaller repair`, the
@@ -74,7 +74,7 @@ distribution build above is signed and notarized.
 - **Media Engine** — the optional LGPL-only Media Pack (FFmpeg 7.1, macOS arm64,
   VideoToolbox H.264 + native AAC) installed with `smaller media install`, with automatic
   fallback to an existing Homebrew/system FFmpeg.
-- **macOS installer** — a `Smaller Please Installer.app` + DMG that installs Core, the extension
+- **macOS installer** — a `Smaller Please.app` installer + DMG that installs Core, the extension
   bundle, and the Media Pack user-level (no `sudo`).
 - **Languages** — English + Simplified Chinese in the installer and extension (Follow system).
 - **Diagnostics and repair** — `smaller doctor`, `smaller setup`, `smaller repair`, the

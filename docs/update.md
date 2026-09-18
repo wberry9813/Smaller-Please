@@ -31,7 +31,7 @@ Core defaults for omitted fields.
 
 Update by running the newer installer, then reloading the extension:
 
-1. Download and open the newer `Smaller Please Installer.app` and click **Install**.
+1. Download and open the newer `Smaller Please.app` and click **Install**.
 2. The installer verifies its embedded payload, compares versions, atomically replaces the
    managed Core, stages the newer extension bundle (the fixed Load-unpacked path never changes),
    updates the Media Pack only if needed, then runs `setup`/`repair` and `doctor`.
