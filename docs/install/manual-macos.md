@@ -1,6 +1,6 @@
 # Manual macOS install (guided steps)
 
-This guide walks from a Mac with no Smaller, Please installation to a working Core + Media
+This guide walks from a Mac with no Smaller Please installation to a working Core + Media
 Engine + Native Host + unpacked extension, ending with a green `doctor` and a successful
 handshake. It is the same work the installer app performs, exposed as individual steps you can
 run yourself.
@@ -165,7 +165,7 @@ opens `chrome://extensions`; it never enables Developer mode or clicks Load unpa
 
 ## 7. Handshake
 
-Open the Smaller, Please popup (click the extension icon) or the install page. The extension runs
+Open the Smaller Please popup (click the extension icon) or the install page. The extension runs
 `cs:handshake` through its service worker to the Native Host. A correct install shows:
 
 ```

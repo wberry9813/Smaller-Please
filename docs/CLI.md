@@ -1,6 +1,6 @@
 # CLI reference
 
-Technical guide for **Smaller, Please Core** — the `smaller` command, its configuration, and
+Technical guide for **Smaller Please Core** — the `smaller` command, its configuration, and
 the install/health lifecycle.
 
 New to the product? Start with the [product README](../README.md) and
@@ -157,7 +157,7 @@ smaller clean [store|cache|inbox|all] [--dry-run] [--yes] [--json]
 ```
 
 `clean` reports the same byte counts as the popup's storage usage and only ever removes
-marker-validated Smaller, Please-managed content plus the bridge-owned inbox. `--dry-run`
+marker-validated Smaller Please-managed content plus the bridge-owned inbox. `--dry-run`
 deletes nothing, and a non-interactive run refuses without `--yes`. Source files, the
 config file, and browser-local history/metrics are never touched. Changing the store
 location does not migrate old content; clean the previous store separately. See
@@ -166,7 +166,7 @@ location does not migrate old content; clean the previous store separately. See
 ## Agent contract
 
 Agents should use the optimized derivative as visual input, never overwrite the source, and fall
-back to the source if Smaller, Please reports `skipped` or fails.
+back to the source if Smaller Please reports `skipped` or fails.
 
 JSON output is intended for Skills and agent wrappers.
 

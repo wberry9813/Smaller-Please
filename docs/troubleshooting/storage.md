@@ -1,6 +1,6 @@
 # Troubleshooting: storage and `clean`
 
-Smaller, Please stores only generated derivatives/cache. **Source files are never stored,
+Smaller Please stores only generated derivatives/cache. **Source files are never stored,
 modified, or deleted.**
 
 ## Where storage lives

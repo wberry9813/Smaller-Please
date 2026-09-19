@@ -1,4 +1,4 @@
-# Uninstalling Smaller, Please
+# Uninstalling Smaller Please
 
 > **Program components** and **user data** are separate. `smaller uninstall` removes the
 > program/integration by default and never deletes user data; it only touches settings or cached
@@ -15,7 +15,7 @@ Program components:
   `~/Library/Application Support/SmallerPlease/bin/{smaller,contextslim}` with the ownership
   marker `bin/.smaller-core.json` (created by the installer app, independent of any Homebrew
   copy);
-- the installer app itself (`Smaller Please.app`), wherever the user put it;
+- the installer app itself (`Smaller Please Installer.app`), wherever the user put it;
 - the native host launcher `~/.contextslim-bridge/native/contextslim-native-host` (an independent
   copy of the binary, never a symlink into a Homebrew Cellar);
 - the Chrome host manifest
@@ -112,7 +112,7 @@ process exits, so it never blocks a reinstall; the installer GUI therefore filte
 ## Installer app: the `Uninstall…` sheet
 
 The installer app has an **`Uninstall…`** action. It opens a confirmation sheet that lists what
-will be removed (Smaller, Please Core, Media Engine, Browser integration, extension files) and
+will be removed (Smaller Please Core, Media Engine, Browser integration, extension files) and
 what is kept (settings, cached/optimized media, browser-local history). **`Keep settings`** and
 **`Keep cached media`** default **ON**; confirming calls the Core uninstall JSON lifecycle with
 the corresponding `--remove-settings`/`--remove-cache` flags only when a box is unchecked.
@@ -122,15 +122,15 @@ The sheet also explains that the `contextslim_*` Chrome storage is only removabl
 **Remove**, and that a Homebrew installation is kept (`brew uninstall smaller-please` is
 suggested, never run by the GUI). After uninstall the app refreshes to **Not installed**
 (connection **Not configured**) and shows the retained settings/cache separately — not as
-corruption. The installer app bundle itself is removed by dragging `Smaller Please.app`
+corruption. The installer app bundle itself is removed by dragging `Smaller Please Installer.app`
 to the Trash.
 
 ## Chrome extension: the final manual `Remove`
 
-Open `chrome://extensions`, find Smaller, Please, and click **Remove**.
+Open `chrome://extensions`, find Smaller Please, and click **Remove**.
 
 This is always a manual step — Chrome does not allow a program to remove an unpacked extension
-from the real profile, and Smaller, Please never closes Chrome. `smaller extension open` (or the
+from the real profile, and Smaller Please never closes Chrome. `smaller extension open` (or the
 installer's **Open Chrome Extensions**) reveals the directory and opens the page. Removing the
 unpacked entry is what clears the extension's `chrome.storage.local` (`contextslim_*` keys);
 neither the CLI nor the installer can do that.
@@ -162,7 +162,7 @@ uninstall` never runs `brew` for you. (A **public** Homebrew tap is **Planned**;
 - Browser-local history/metrics (`chrome.storage.local`).
 - An external/system/Homebrew `ffmpeg` + `ffprobe`.
 - The Homebrew package itself.
-- Your media files (sources are never modified by Smaller, Please).
+- Your media files (sources are never modified by Smaller Please).
 - Other Chrome Native Messaging hosts or anything outside the managed paths above.
 
 ## After uninstall / reinstall

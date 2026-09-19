@@ -7,7 +7,7 @@ global switch, the two website-policy modes, the unified Website Rules list, the
 file-type gate, and the export/import configuration format.
 
 It is deliberately **not** a Core config document. Optimization thresholds (image/video minimum
-size, minimum savings, store location) are owned by Smaller, Please Core/CLI and are read by the
+size, minimum savings, store location) are owned by Smaller Please Core/CLI and are read by the
 extension through `config_get`. See [`CLI.md`](CLI.md).
 
 ## 1. Ownership and storage
@@ -53,13 +53,13 @@ promoted to the global truth. `pausedUntil` is gone; the old 30-minute pause doe
 The Settings page **General** section and the popup both expose the same single switch
 (`enabled`):
 
-- `enabled: true` — Smaller, Please may intercept supported uploads according to the website
+- `enabled: true` — Smaller Please may intercept supported uploads according to the website
   policy below.
-- `enabled: false` — Smaller, Please never intercepts an upload anywhere; **`mode` and all
+- `enabled: false` — Smaller Please never intercepts an upload anywhere; **`mode` and all
   `siteRules` are kept exactly as they were**.
 
 Toggling the switch only changes `enabled`. It can never change `mode` or a rule, so turning
-Smaller, Please back on restores the previous configuration untouched. There is no separate
+Smaller Please back on restores the previous configuration untouched. There is no separate
 pause state.
 
 ## 3. Modes and the exact decision
@@ -434,8 +434,8 @@ switch and its policy status line, the current site's **concise** effective stat
 
 ## 11. Non-goals (explicit)
 
-- **No AI auto-editing.** An AI assistant can read/analyze the exported JSON, but Smaller,
-  Please does not let an AI or any process edit the configuration for you.
+- **No AI auto-editing.** An AI assistant can read/analyze the exported JSON, but
+  Smaller Please does not let an AI or any process edit the configuration for you.
 - **No CLI / Native Host management of this config.** The control document is browser-local;
   `smaller config` does not read or write it, and the Native Messaging protocol has no control
   operation.

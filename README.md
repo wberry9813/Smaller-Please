@@ -1,18 +1,18 @@
-# Smaller, Please
+# Smaller Please
 
 **Make uploads smaller.**
 
-Smaller, Please compresses images and videos on your Mac before they are uploaded to AI apps
+Smaller Please compresses images and videos on your Mac before they are uploaded to AI apps
 such as ChatGPT and Claude. Everything happens locally — no cloud processing, no account, no
 telemetry.
 
-[Download the beta](https://github.com/wberry9813/Smaller-Please/releases/tag/v0.1.0-beta.2) ·
+[Download the beta](https://github.com/wberry9813/Smaller-Please/releases/tag/v0.1.0-beta.3) ·
 [Install guide](docs/DOWNLOAD.md) · [Privacy](docs/PRIVACY.md) · [中文](README.zh-CN.md)
 
 ## What it is
 
 Large screenshots, photos, and exported UI images can waste upload and proxy traffic when an AI
-tool only needs a visually faithful working copy. Smaller, Please creates a smaller, AI-ready
+tool only needs a visually faithful working copy. Smaller Please creates a smaller, AI-ready
 copy of each image or video and reports the bytes saved — without touching your original file.
 
 It works from the command line, and it integrates with Chrome so the images and videos you pick,
@@ -35,7 +35,7 @@ uploaded.
 - **Never grows your files** — if the optimized copy is not smaller, it is discarded and the
   original is used.
 - **No cloud processing** — files stay on your Mac.
-- **macOS installer** — a user-level install with no password. The Beta.2 DMG is signed with a
+- **macOS installer** — a user-level install with no password. The Beta.3 DMG is signed with a
   Developer ID and notarized/stapled by Apple, so Gatekeeper accepts it.
 
 Sources are never modified or overwritten.
@@ -71,19 +71,19 @@ own upload path; if that handoff cannot be confirmed, the original file is uploa
 
 ## Privacy highlights
 
-- Your images and videos are processed **on your Mac**. Nothing is uploaded to a Smaller,
-  Please server.
-- The original file is never modified; Smaller, Please only writes optimized copies.
+- Your images and videos are processed **on your Mac**. Nothing is uploaded to a
+  Smaller Please server.
+- The original file is never modified; Smaller Please only writes optimized copies.
 - No account, no telemetry, no tracking, and no reading of your chat or browsing activity.
 - Read the full statement in [`docs/PRIVACY.md`](docs/PRIVACY.md).
 
 ## Download and install
 
-1. Open the [Beta.2 releases page](https://github.com/wberry9813/Smaller-Please/releases) and
+1. Open the [Beta.3 releases page](https://github.com/wberry9813/Smaller-Please/releases) and
    download the installer for your Mac:
-   `Smaller-Please-Installer-0.1.0-beta.2-macos-arm64.dmg`.
-2. Follow the step-by-step guide in [`docs/DOWNLOAD.md`](docs/DOWNLOAD.md) to open the installer
-   and add the Chrome extension.
+   `Smaller-Please-Installer-0.1.0-beta.3-macos-arm64.dmg`.
+2. Open `Smaller Please Installer.app` and click **Install**, then follow the step-by-step guide
+   in [`docs/DOWNLOAD.md`](docs/DOWNLOAD.md) to add the Chrome extension.
 
 This is a Beta release. The install guide covers the one-time Chrome setup (Chrome requires
 **Developer mode → Load unpacked**, which cannot be automated) and what to expect.

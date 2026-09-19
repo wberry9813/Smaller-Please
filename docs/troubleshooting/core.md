@@ -59,7 +59,7 @@ original tool keys and adds the health model (`schema_version: 1`):
 {
   "schema_version": 1,
   "overall_status": "warning",
-  "brand": "Smaller, Please",
+  "brand": "Smaller Please",
   "core_version": "0.1.0",
   "versions": { "core_version": "0.1.0", "native_protocol_version": 1,
                 "bridge_schema_version": 1, "extension_version": null,

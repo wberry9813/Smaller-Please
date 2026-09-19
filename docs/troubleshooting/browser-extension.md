@@ -77,7 +77,7 @@ If the visible runtime (`~/Applications/Smaller Please Extension`) is removed wh
 ownership metadata remains, `smaller extension status` reports `installed: "orphaned"` and
 `doctor` reports `extension_orphaned` (`! Removed locally — remove it in Chrome`). Chrome keeps
 unpacked extensions after their files disappear, so open `chrome://extensions`, find
-Smaller, Please, and click **Remove**. This is a warning, never an error, and `load_state`
+Smaller Please, and click **Remove**. This is a warning, never an error, and `load_state`
 stays honestly `unknown`. Re-run `smaller extension install` (or `smaller repair --yes`) to
 re-stage the bundle instead if you want to keep using it. An orphaned state does not change
 what `smaller uninstall` deletes.

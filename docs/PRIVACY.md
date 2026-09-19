@@ -1,21 +1,21 @@
 # Privacy
 
-Smaller, Please is a **local-first** tool. It reduces image and video size on your own Mac
+Smaller Please is a **local-first** tool. It reduces image and video size on your own Mac
 before those files are uploaded to a site you chose. This page states plainly what happens to
 your data.
 
-## What Smaller, Please does with your media
+## What Smaller Please does with your media
 
 - **Images and videos are processed locally, on your Mac.** The Core (the `smaller` command and
   the part the browser talks to) reads the file, creates an optimized copy, and hands that copy
   back to the browser. The **original file is never modified**.
-- **Your media is not uploaded to any Smaller, Please server.** There is no cloud processing
-  and no Smaller, Please account. The optimized copy is only uploaded to the site you are using
+- **Your media is not uploaded to any Smaller Please server.** There is no cloud processing
+  and no Smaller Please account. The optimized copy is only uploaded to the site you are using
   (for example ChatGPT or Claude) by your own action, exactly as before.
 - **Site conversations and page content are not stored or read.** The browser integration
   watches for images/videos you pick, drop, or paste; it does not read, store, or transmit your
   prompts, the page's chat text, or the page content.
-- **Chrome history is not read.** Smaller, Please does not request or use the `history`
+- **Chrome history is not read.** Smaller Please does not request or use the `history`
   permission and does not look at the pages you visited.
 - **Your browser profile is not modified.** No command and no installer touches your Chrome
   profile, cookies, or saved passwords. Loading the extension is a manual Chrome step you
@@ -56,8 +56,8 @@ configuration and managed store/cache. Removing those is an explicit opt-in.
 - **No telemetry** and no analytics. Nothing about your usage is sent to us or to any third
   party.
 - **No media content, no chat content, no browsing history, no page URLs** — not stored by
-  Smaller, Please and not transmitted anywhere except to the site you are already using.
-- **No account and no identifiers.** Smaller, Please does not create a user account or a
+  Smaller Please and not transmitted anywhere except to the site you are already using.
+- **No account and no identifiers.** Smaller Please does not create a user account or a
   tracking identifier.
 
 ## Network activity
@@ -71,5 +71,5 @@ elsewhere is opt-in and unrelated to your media:
 
 ## Questions
 
-This page describes the implemented behavior of Smaller, Please 0.1.0. If you find a statement
+This page describes the implemented behavior of Smaller Please 0.1.0. If you find a statement
 here that does not match what the software does, that is a bug — please report it.

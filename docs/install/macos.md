@@ -1,10 +1,10 @@
-# Install Smaller, Please on macOS
+# Install Smaller Please on macOS
 
-Smaller, Please is macOS-first. There is no server, no account, and no telemetry. Pick a path:
+Smaller Please is macOS-first. There is no server, no account, and no telemetry. Pick a path:
 
 | Path | Who it is for | Status |
 |---|---|---|
-| [Installer app (recommended)](../DOWNLOAD.md) | normal users | **Implemented** (the Beta.2 DMG is signed with a Developer ID and notarized/stapled) |
+| [Installer app (recommended)](../DOWNLOAD.md) | normal users | **Implemented** (the Beta.3 DMG is signed with a Developer ID and notarized/stapled) |
 | [Manual install / guided steps](manual-macos.md) | users who want to run each step themselves | **Implemented** |
 | [Homebrew](homebrew.md) | technical users | **Planned** (no public tap today) |
 
@@ -16,7 +16,7 @@ automated and is always done by you.
 
 | Component | What it is | Managed by |
 |---|---|---|
-| Smaller, Please Core | the `smaller` CLI / native host binary (legacy alias `contextslim`) | the installer, or your `PATH` |
+| Smaller Please Core | the `smaller` CLI / native host binary (legacy alias `contextslim`) | the installer, or your `PATH` |
 | Media Engine | a paired `ffmpeg` + `ffprobe` | an existing PATH/Homebrew/system backend, or the optional local **Media Pack** (`smaller media install`) |
 | Native Host | `~/.contextslim-bridge/native/contextslim-native-host` + Chrome host manifest `com.contextslim.bridge.json` | `smaller setup` / `smaller native install` / `smaller repair` |
 | Chrome extension | production bundle staged to the visible `~/Applications/Smaller Please Extension` (ownership marker + state stay in `~/Library/Application Support/SmallerPlease/extension/`) | Core stages it (`smaller setup` / `smaller extension install`); you load it at `chrome://extensions` |
@@ -24,7 +24,7 @@ automated and is always done by you.
 
 ## Installer app (recommended)
 
-Opening the downloaded `Smaller-Please-Installer-0.1.0-beta.2-macos-arm64.dmg` and clicking
+Opening the downloaded `Smaller-Please-Installer-0.1.0-beta.3-macos-arm64.dmg` and clicking
 **Install** does everything below user-level (no `sudo`, no `PATH` changes) into
 `~/Library/Application Support/SmallerPlease/`:
 
@@ -36,7 +36,7 @@ Opening the downloaded `Smaller-Please-Installer-0.1.0-beta.2-macos-arm64.dmg` a
    **Open Chrome Extensions** for the one-time Developer-mode / Load-unpacked step.
 
 An existing Homebrew/system `smaller` or FFmpeg is never deleted, overwritten, or modified. The
-Beta.2 DMG is **signed and notarized**; see [`../DOWNLOAD.md`](../DOWNLOAD.md) for the detailed
+Beta.3 DMG is **signed and notarized**; see [`../DOWNLOAD.md`](../DOWNLOAD.md) for the detailed
 walkthrough.
 
 ## Requirements

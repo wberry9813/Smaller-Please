@@ -1,17 +1,17 @@
-# Smaller, Please
+# Smaller Please
 
 **让上传更小。**
 
-Smaller, Please 会在图片和视频上传到 ChatGPT、Claude 等 AI 应用之前，在你的 Mac 上完成压缩。
+Smaller Please 会在图片和视频上传到 ChatGPT、Claude 等 AI 应用之前，在你的 Mac 上完成压缩。
 所有处理都在本地进行，没有云端处理、没有账户、也没有遥测。
 
-[下载 Beta 版](https://github.com/wberry9813/Smaller-Please/releases/tag/v0.1.0-beta.2) ·
+[下载 Beta 版](https://github.com/wberry9813/Smaller-Please/releases/tag/v0.1.0-beta.3) ·
 [安装指南](docs/DOWNLOAD.md) · [隐私](docs/PRIVACY.md) · [English](README.md)
 
 ## 它是什么
 
 当 AI 工具只需要一份视觉上准确的副本时，大尺寸截图、照片和导出的界面图片会浪费大量上传流量。
-Smaller, Please 会为每张图片或每个视频生成一份更小、便于 AI 使用的副本，并报告节省的字节数，
+Smaller Please 会为每张图片或每个视频生成一份更小、便于 AI 使用的副本，并报告节省的字节数，
 同时不会改动你的原始文件。
 
 它既可以在命令行中使用，也集成了 Chrome：你在任何网站（例如 ChatGPT 或 Claude）中选择、拖入或
@@ -29,7 +29,7 @@ Smaller, Please 会为每张图片或每个视频生成一份更小、便于 AI 
 - **可导出、便于阅读的配置** —— 把你的规则导出为纯 JSON，方便你（或 AI 助手）阅读与保存。
 - **绝不增大你的文件** —— 如果优化后的副本没有更小，它会被丢弃，并使用原始文件。
 - **没有云端处理** —— 文件始终留在你的 Mac 上。
-- **macOS 安装程序** —— 用户级安装，无需输入密码。Beta.2 的 DMG 已使用 Developer ID 签名，
+- **macOS 安装程序** —— 用户级安装，无需输入密码。Beta.3 的 DMG 已使用 Developer ID 签名，
   并通过 Apple 公证/装订（stapled），因此 Gatekeeper 会接受它。
 
 原始文件永远不会被修改或覆盖。
@@ -59,17 +59,18 @@ Smaller 拥有广泛的网站访问权限，这样你添加自定义网站时无
 
 ## 隐私亮点
 
-- 你的图片和视频**在你的 Mac 上**处理，不会上传到 Smaller, Please 服务器。
-- 原始文件永远不被修改；Smaller, Please 只写出优化后的副本。
+- 你的图片和视频**在你的 Mac 上**处理，不会上传到 Smaller Please 服务器。
+- 原始文件永远不被修改；Smaller Please 只写出优化后的副本。
 - 没有账户、没有遥测、没有跟踪，也不会读取你的聊天或浏览活动。
 - 完整说明见 [`docs/PRIVACY.md`](docs/PRIVACY.md)。
 
 ## 下载与安装
 
-1. 打开 [Beta.2 版本发布页面](https://github.com/wberry9813/Smaller-Please/releases)，下载适用于
+1. 打开 [Beta.3 版本发布页面](https://github.com/wberry9813/Smaller-Please/releases)，下载适用于
    你的 Mac 的安装程序：
-   `Smaller-Please-Installer-0.1.0-beta.2-macos-arm64.dmg`。
-2. 按照 [`docs/DOWNLOAD.md`](docs/DOWNLOAD.md) 中的分步指南打开安装程序并添加 Chrome 扩展。
+   `Smaller-Please-Installer-0.1.0-beta.3-macos-arm64.dmg`。
+2. 打开 `Smaller Please Installer.app` 并点击 **Install**，然后按照
+   [`docs/DOWNLOAD.md`](docs/DOWNLOAD.md) 中的分步指南添加 Chrome 扩展。
 
 这是一个 Beta 版本。安装指南涵盖了只需一次的 Chrome 设置步骤（Chrome 要求使用
 **开发者模式 → 加载已解压的扩展程序**，此步骤无法自动完成），以及你可能会看到的情况。

@@ -1,4 +1,4 @@
-# Updating Smaller, Please
+# Updating Smaller Please
 
 > This page separates what works today (**Implemented**) from the designed updater
 > (**Planned**). Do not script the planned commands; they do not exist yet.
@@ -31,11 +31,11 @@ Core defaults for omitted fields.
 
 Update by running the newer installer, then reloading the extension:
 
-1. Download and open the newer `Smaller Please.app` and click **Install**.
+1. Download and open the newer `Smaller Please Installer.app` and click **Install**.
 2. The installer verifies its embedded payload, compares versions, atomically replaces the
    managed Core, stages the newer extension bundle (the fixed Load-unpacked path never changes),
    updates the Media Pack only if needed, then runs `setup`/`repair` and `doctor`.
-3. Open `chrome://extensions` and click **Reload** on the Smaller, Please card, then hard-refresh
+3. Open `chrome://extensions` and click **Reload** on the Smaller Please card, then hard-refresh
    the target site tab. Chrome is never closed for you.
 
 A same-version reinstall is a no-op and preserves `config.json`, the managed store, and the

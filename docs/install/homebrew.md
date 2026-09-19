@@ -1,8 +1,8 @@
-# Install Smaller, Please via Homebrew
+# Install Smaller Please via Homebrew
 
 > **Status: Planned — not available today.**
 >
-> There is **no public Smaller, Please Homebrew tap** yet, so there is no working
+> There is **no public Smaller Please Homebrew tap** yet, so there is no working
 > `brew install` command for this product. Do not run a tap command expecting it to work, and
 > do not treat any tap URL as real until this page says otherwise.
 

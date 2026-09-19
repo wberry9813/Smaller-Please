@@ -1,19 +1,19 @@
 # Third-Party Notices
 
-This file distinguishes **Smaller, Please Core's own license** from the licenses of the
-separate **Smaller, Please Media Pack** and its system dependencies. It is engineering
+This file distinguishes **Smaller Please Core's own license** from the licenses of the
+separate **Smaller Please Media Pack** and its system dependencies. It is engineering
 compliance information, not legal advice.
 
-## Smaller, Please Core
+## Smaller Please Core
 
-Smaller, Please Core (the `smaller` CLI, the `contextslim` legacy alias, the native host, the
+Smaller Please Core (the `smaller` CLI, the `contextslim` legacy alias, the native host, the
 lifecycle, and the browser extension) is licensed under the **MIT License** — see `LICENSE`.
 The Media Pack is a **separate program and a separate distribution artifact**
 (`smaller-media-<version>-macos-arm64.tar.gz`); it is **not** covered by Core's MIT license, is
 never linked into Core, and the Core release archive does not embed it. Core executes it only as
 a subprocess after validating the payload; Core does not grow because of the Media Pack.
 
-## Smaller, Please Media Pack (FFmpeg)
+## Smaller Please Media Pack (FFmpeg)
 
 The Media Pack (`smaller-media-<version>-macos-arm64.tar.gz`) contains an unmodified build of
 **FFmpeg 7.1**:
@@ -57,7 +57,7 @@ The artifact records the source URL, tag, SHA-256, signature status, and toolcha
 distributor of the Media Pack; the source is also publicly available at the FFmpeg release URL
 above.
 
-Nothing in Smaller, Please's distribution may restrict modifying, running, or relinking the
+Nothing in Smaller Please's distribution may restrict modifying, running, or relinking the
 LGPL Media Pack, and the Media Pack must remain replaceable by the user.
 
 ### Independent JPEG Group notice
@@ -78,7 +78,7 @@ The Media Pack links only against macOS system libraries and frameworks:
 - `/usr/lib/libz.1.dylib` (zlib)
 - `VideoToolbox`, `CoreMedia`, `CoreVideo`, `CoreFoundation`, `CoreServices` frameworks
 
-These are part of macOS and are **not** redistributed by Smaller, Please. VideoToolbox is
+These are part of macOS and are **not** redistributed by Smaller Please. VideoToolbox is
 Apple's H.264 implementation; using it introduces no GPL component, but framework availability
 is not proof of H.264 patent rights.
 
@@ -86,5 +86,5 @@ is not proof of H.264 patent rights.
 
 Copyright compliance does not settle H.264/AAC patent-pool licensing. The FFmpeg project's own
 legal page warns that commercial use of patented standards can attract licensing fees. Review
-the H.264/AAC patent position with qualified counsel before monetization. Smaller, Please does
+the H.264/AAC patent position with qualified counsel before monetization. Smaller Please does
 not grant any patent license.
