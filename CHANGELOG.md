@@ -1,7 +1,60 @@
 # Changelog
 
-Notable changes to **Smaller Please** (formerly ContextSlim). The product/Core version is the
+Notable changes to **Smaller, Please** (formerly ContextSlim). The product/Core version is the
 release version; `contextslim` remains only a compatibility alias.
+
+## [0.1.0-beta.6] - 2026-10-01
+
+The first public beta whose release build includes the Production licence verification trust root.
+Distributed through Homebrew; unsigned and DMG-free.
+
+### Added
+
+- **Production licence verification** — the normal release build now trusts the first Production
+  licence verification key. A licence issued by the Production backend can activate Pro on the release build.
+
+### Changed
+
+- **Licence validation hardening** — the licence envelope's `key_id` is now bound to the signed
+  payload; a mismatch is rejected.
+- **Homebrew is the supported installation and update path** —
+  `brew tap wberry9813/smaller-please` then `brew install smaller-please` /
+  `brew upgrade smaller-please`. From this release, releases are unsigned and DMG-free; the
+  earlier signed installer DMG is no longer produced.
+- **Extension lifecycle honesty** — `smaller extension status` reports the staged extension's
+  source/version and whether it is stale, and reports a "not staged" state honestly instead of
+  implying the extension is loaded.
+- **Homebrew onboarding** — the Homebrew formula's caveats and the install docs now guide the
+  supported flow end to end: `brew install` → `smaller setup` → `smaller extension path` → Chrome
+  "Load unpacked" from the visible `~/Applications/Smaller Please Extension` path (never from the
+  Homebrew Cellar).
+
+## [0.1.0-beta.5] - 2026-09-28
+
+### Added
+
+- **Canonical version contract** — all version surfaces are now strictly derived from `Cargo.toml`.
+- **GitHub release automation** — draft-first release automation via `release.sh --publish github`.
+- **Public Homebrew tap publication flow** — the tap formula is published from the released GitHub
+  artifact.
+
+### Changed
+
+- **Pro capability delivery** — granular licence capabilities reach the CLI and the browser
+  extension end to end.
+- **Chrome extension Pro controls** — `Smart` stays selectable and the Pro-gated `Maximum` /
+  metadata controls show a concise lock hint instead of silently changing state.
+
+## [0.1.0-beta.4] - 2026-09-20
+
+### Added
+
+- **First public CLI macOS arm64 artifact** and public Homebrew formula (`brew tap wberry9813/smaller-please` + `brew install smaller-please`) shipped alongside the still-signed DMG.
+- **AI-install fresh-user acceptance**.
+
+### Changed
+
+- **Version scheme** — added `version_scheme 1` in the Homebrew formula so betas upgrade over the historical `0.1.0`.
 
 ## [0.1.0-beta.3] - Beta 3
 

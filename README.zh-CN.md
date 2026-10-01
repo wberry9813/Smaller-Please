@@ -1,108 +1,124 @@
-# Smaller Please
+# Smaller, Please
 
-**让上传更小。**
+**在上传前于本地准备更小的 AI 适用文件，同时保留原始文件。**
 
-Smaller Please 会在图片和视频上传到 ChatGPT、Claude 等 AI 应用之前，在你的 Mac 上完成压缩。
-所有处理都在本地进行，没有云端处理、没有账户、也没有遥测。
+[阅读英文版 (Read in English)](README.md)
 
-[下载 Beta 版](https://github.com/wberry9813/Smaller-Please/releases/tag/v0.1.0-beta.3) ·
-[安装指南](docs/DOWNLOAD.md) · [隐私](docs/PRIVACY.md) · [English](README.md)
+## 安装
+
+Homebrew 是唯一受支持的安装方法（仅限 Apple Silicon (arm64) 上的 macOS 12+）。
+
+```bash
+brew tap wberry9813/smaller-please
+brew install smaller-please
+smaller setup
+smaller doctor
+```
+
+然后请手动加载浏览器扩展（见下文）。
 
 ## 它是什么
 
-当 AI 工具只需要一份视觉上准确的副本时，大尺寸截图、照片和导出的界面图片会浪费大量上传流量。
-Smaller Please 会为每张图片或每个视频生成一份更小、便于 AI 使用的副本，并报告节省的字节数，
-同时不会改动你的原始文件。
+- **图片优化：** HEIC、JPEG 和 TIFF 将被优化为更小的 JPEG 或 PNG 副本。
+- **视频优化：** MP4、MOV 和 M4V 使用 H.264 + AAC 在本地进行压缩。
+- **浏览器上传优化：** 拦截并缩小在受支持 AI 网站上的上传文件。
+- **AI 代理准备：** CLI 工具输出机器可读的 JSON，以便代理使用优化后的文件。
+- **本地处理：** 所有操作均在你的 Mac 上运行。不会将任何媒体发送到我们的服务器。
+- **保留源文件：** 默认情况下绝不修改或删除原始文件。
+- **Smart 与 Maximum 压缩：** “Smart”模式提供安全默认值，“Maximum”模式提供更激进的压缩（需要 Pro）。
+- **元数据控制：** 显式移除全部元数据，使用 `--metadata remove-all`（需要 Pro）。
 
-它既可以在命令行中使用，也集成了 Chrome：你在任何网站（例如 ChatGPT 或 Claude）中选择、拖入或
-粘贴的图片和视频，会在上传前完成优化。
+## 浏览器扩展
 
-## 功能
+通过 Homebrew 安装后，你必须手动加载扩展：
 
-- **本地图片压缩** —— HEIC/JPEG/TIFF → JPEG，并支持 PNG；带有“绝不增大”保护与最小节省比例
-  阈值。
-- **本地视频压缩** —— MP4/MOV/M4V → MP4（H.264 + AAC），同样带有“绝不增大”保护。
-- **Chrome 集成** —— 优化你选择、拖入或粘贴到网站（例如 ChatGPT 或 Claude）中的图片与视频。
-- **一个开关、两种网站模式与按网站规则** —— 默认仅在内置的 AI 网站白名单（ChatGPT、Claude、
-  Gemini、DeepSeek、Perplexity、Grok、Microsoft Copilot、Poe、Mistral Le Chat）上运行；你随时
-  可以切换到“在所有网站”模式，并通过一份统一的规则列表管理内置网站和你添加的任何网站。
-- **可导出、便于阅读的配置** —— 把你的规则导出为纯 JSON，方便你（或 AI 助手）阅读与保存。
-- **绝不增大你的文件** —— 如果优化后的副本没有更小，它会被丢弃，并使用原始文件。
-- **没有云端处理** —— 文件始终留在你的 Mac 上。
-- **macOS 安装程序** —— 用户级安装，无需输入密码。Beta.3 的 DMG 已使用 Developer ID 签名，
-  并通过 Apple 公证/装订（stapled），因此 Gatekeeper 会接受它。
+1. 运行 `smaller setup` 以准备扩展文件。
+2. 运行 `smaller extension path` 以显示确切的文件夹路径（`~/Applications/Smaller Please Extension`）。
+3. 在 Google Chrome 中打开 `chrome://extensions`。
+4. 开启**开发者模式 (Developer mode)**（右上角）。
+5. 点击**加载已解压的扩展程序 (Load unpacked)**，然后选择第 2 步中输出的文件夹。
 
-原始文件永远不会被修改或覆盖。
+**受支持的网站：**
+默认情况下，扩展仅在以下三个内置的 AI 网站上运行：
+- **ChatGPT** (`chatgpt.com`)：支持点击和拖放上传。
+- **Gemini** (`gemini.google.com`)：支持点击上传。拖放上传为 **passthrough（原样上传）**（原始文件会原样附加，不会被优化）。
+- **DeepSeek** (`chat.deepseek.com`)：支持点击和拖放上传。
 
-## 控制优化范围
+## CLI
 
-打开扩展弹窗即可切换唯一的 **Smaller** 开关，并查看当前网站的实际状态。打开**设置**页可使用完整
-控制：
+`smaller` 命令帮助你优化媒体文件并检查系统运行状况。
 
-- 用 **Smaller** 开关在所有网站开启或关闭优化——你的模式和网站规则都会保留。
-- 选择**网站模式**：在所有网站优化，或仅优化选定的网站。
-- 在**网站规则**列表中管理**内置**的 AI 网站（ChatGPT、Claude、Gemini、DeepSeek、Perplexity、
-  Grok、Microsoft Copilot、Poe、Mistral Le Chat）和**自定义**网站，或添加任何网站。
-- 将配置**导出**为可读的 JSON，并**导入**回来（或粘贴一份）。
+```bash
+smaller optimize ./photo.jpg
+smaller optimize ./clip.mov
+smaller prepare ./photo.jpg --json
+smaller prepare-batch ./input --json
+smaller doctor
+```
 
-Smaller 拥有广泛的网站访问权限，这样你添加自定义网站时无需每次都弹出新的权限提示。**默认情况下它
-只在“仅选定的网站”（内置 AI 白名单）上运行**；你可以随时切换到“在所有网站优化”。优先级为：
-开关 > 网站规则 > 模式，因此在白名单模式下未列出的网站不会被优化。它只会查看你选择、拖入或粘贴的
-文件。
+- `optimize`：用于优化图片、视频或目录的单一命令。
+- `prepare` / `prepare-batch`：输出包含 `use_path` 的冻结 JSON 计划。`use_path` 是你应该上传或使用的确切文件。
 
-尚未通过实站验证的上传路径，其网站行会标记为**“未验证”**——这表示 Smaller 尚未在该网站上验证支持，
-**绝不是**权限限制。网站行也可能带有 **`passthrough`（原样上传）** 能力：该上传方式经验证会原样上传
-原始文件，这是可接受的限制，而不是失败。**在 Gemini 上，点击上传会被优化；拖放则会原样上传原始文件，
-不进行优化。**全新安装的默认值是内置 AI 白名单，但已有配置绝不会被悄悄修改。只有确认已将文件交给
-网站自身的上传路径后，才会报告优化成功；若无法确认，则改为上传原文件。详见
-[`docs/EXTENSION_SETTINGS.md`](docs/EXTENSION_SETTINGS.md)。
+## 与 AI 代理一起使用
 
-## 隐私亮点
+Smaller, Please 为 OpenCode 和 Codex（已验证发现功能）以及 Claude Code（通过共享的 Agent Skills 标准兼容）提供了一流的公开代理技能 (Agent Skill)。
+AI 代理必须安装 `smaller` CLI 并遵循严格指南：
+- 首选 `smaller prepare` 或 `smaller prepare-batch --json` 来获取优化计划。
+- 始终使用 JSON 计划中返回的确切 `use_path`。
+- 绝不自行构造派生的输出路径。
+- 保留源文件；绝不修改或删除它们。
+- 绝不静默替换为其他压缩工具。
+- 上传行为取决于环境的实际能力（除非环境真正执行了外部上传动作，否则不要声称已完成上传）。
 
-- 你的图片和视频**在你的 Mac 上**处理，不会上传到 Smaller Please 服务器。
-- 原始文件永远不被修改；Smaller Please 只写出优化后的副本。
-- 没有账户、没有遥测、没有跟踪，也不会读取你的聊天或浏览活动。
-- 完整说明见 [`docs/PRIVACY.md`](docs/PRIVACY.md)。
+阅读代理技能指南：
+- [技能定义](skills/smaller-please/SKILL.md)
+- [工作流](skills/smaller-please/workflows.md)
+- [命令参考](skills/smaller-please/reference.md)
+- [代理技能指南](docs/AGENT_SKILL.md)
 
-## 下载与安装
+## Free 与 Pro
 
-1. 打开 [Beta.3 版本发布页面](https://github.com/wberry9813/Smaller-Please/releases)，下载适用于
-   你的 Mac 的安装程序：
-   `Smaller-Please-Installer-0.1.0-beta.3-macos-arm64.dmg`。
-2. 打开 `Smaller Please Installer.app` 并点击 **Install**，然后按照
-   [`docs/DOWNLOAD.md`](docs/DOWNLOAD.md) 中的分步指南添加 Chrome 扩展。
+- **Free（免费版）：** 包含 `smart` 模式优化、浏览器优化以及默认元数据行为。
+- **Pro（专业版）：** 通过本地验证的许可证密钥，增加 `maximum` 压缩模式和元数据移除（`remove-all`）功能。购买通道目前尚未普遍开放。
 
-这是一个 Beta 版本。安装指南涵盖了只需一次的 Chrome 设置步骤（Chrome 要求使用
-**开发者模式 → 加载已解压的扩展程序**，此步骤无法自动完成），以及你可能会看到的情况。
+## 隐私
 
-## 系统要求
+你的媒体处理完全在本地进行。Smaller, Please 不会将你的图片或视频上传到任何媒体处理服务器。阅读[权威隐私政策](PRIVACY.md)。
 
-- macOS 12 或更高版本，Apple Silicon（arm64）。
-- 浏览器集成需要 Google Chrome。
+## 更新
 
-## Beta 状态与已知限制
+通过 Homebrew 更新，然后刷新本地配置：
 
-- **Beta 软件** —— 功能与行为在正式版之前可能发生变化。
-- **Chrome 应用商店上架为计划中。** 添加扩展需要手动执行**开发者模式 → 加载已解压的扩展程序**。
-- **公开的 Homebrew tap 为计划中**；目前没有公开 tap。
-- **自动更新为计划中。** 更新方式是运行较新的安装程序并重新加载扩展；见
-  [`docs/update.md`](docs/update.md)。
-- **公开的 Media Pack 下载服务为计划中**；Media Pack 目前只是独立的本地制品。
-- **暂不支持 Intel（`x86_64`）Mac 与 Windows。**
-- 部分网站的上传路径尚未通过实站验证，少数为经验证的 `passthrough`（原样上传）。扩展会如实标注，
-  见 [`docs/EXTENSION_SETTINGS.md`](docs/EXTENSION_SETTINGS.md)。
+```bash
+brew update
+brew upgrade smaller-please
+smaller setup
+smaller doctor
+```
+升级后，前往 `chrome://extensions` 并点击 Smaller, Please 扩展卡片上的刷新/重载图标。
 
-## 文档
+## 卸载
 
-- [下载与安装](docs/DOWNLOAD.md)
-- [在 macOS 上安装](docs/install/macos.md) —— 安装程序与 [Homebrew（计划中）](docs/install/homebrew.md)
-- [扩展设置与网站规则](docs/EXTENSION_SETTINGS.md)
-- [CLI 参考](docs/CLI.md)
-- [更新](docs/update.md) · [卸载](docs/uninstall.md)
-- [隐私](docs/PRIVACY.md) · [隐私政策页](PRIVACY.md)
-- [疑难解答](docs/troubleshooting/browser-extension.md)
+```bash
+brew uninstall smaller-please
+smaller uninstall
+```
+有关默认保留哪些内容的详细信息，请参阅[卸载指南](docs/uninstall.md)。
+
+## 故障排除
+
+请参阅有关
+[浏览器扩展](docs/troubleshooting/browser-extension.md)、
+[原生主机](docs/troubleshooting/native-host.md)、
+[核心组件](docs/troubleshooting/core.md)、
+[存储](docs/troubleshooting/storage.md) 和
+[媒体引擎](docs/troubleshooting/media-engine.md) 的故障排除指南。
 
 ## 许可证
 
-MIT。见 [`LICENSE`](LICENSE)。第三方组件与许可证见
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。
+MIT. 参见 [`LICENSE`](LICENSE) 和 [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md)。
+
+## 网站 / 发布版本
+
+- **网站:** [https://smaller-please.inchmirror.studio](https://smaller-please.inchmirror.studio)
+- **发布版本:** [https://github.com/wberry9813/Smaller-Please/releases](https://github.com/wberry9813/Smaller-Please/releases)

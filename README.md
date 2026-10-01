@@ -1,124 +1,124 @@
-# Smaller Please
+# Smaller, Please
 
-**Make uploads smaller.**
+**Locally prepare smaller AI-ready files before upload while preserving originals.**
 
-Smaller Please compresses images and videos on your Mac before they are uploaded to AI apps
-such as ChatGPT and Claude. Everything happens locally — no cloud processing, no account, no
-telemetry.
+[Read in Simplified Chinese (简体中文)](README.zh-CN.md)
 
-[Download the beta](https://github.com/wberry9813/Smaller-Please/releases/tag/v0.1.0-beta.3) ·
-[Install guide](docs/DOWNLOAD.md) · [Privacy](docs/PRIVACY.md) · [中文](README.zh-CN.md)
+## Install
 
-## What it is
+Homebrew is the only supported installation method (macOS 12+ on Apple Silicon (arm64) only).
 
-Large screenshots, photos, and exported UI images can waste upload and proxy traffic when an AI
-tool only needs a visually faithful working copy. Smaller Please creates a smaller, AI-ready
-copy of each image or video and reports the bytes saved — without touching your original file.
+```bash
+brew tap wberry9813/smaller-please
+brew install smaller-please
+smaller setup
+smaller doctor
+```
 
-It works from the command line, and it integrates with Chrome so the images and videos you pick,
-drop, or paste into any website (for example ChatGPT or Claude) are optimized before they are
-uploaded.
+Then load the browser extension manually (see below).
 
-## Features
+## What it does
 
-- **Local image compression** — HEIC/JPEG/TIFF → JPEG and PNG handling, with a never-grow guard
-  and a minimum-savings threshold.
-- **Local video compression** — MP4/MOV/M4V → MP4 (H.264 + AAC), with the same never-grow guard.
-- **Chrome integration** — optimizes images and videos you pick, drop, or paste into a website
-  (for example ChatGPT or Claude).
-- **One switch, two website modes, and per-site rules** — by default Smaller runs only on a
-  built-in AI allowlist (ChatGPT, Claude, Gemini, DeepSeek, Perplexity, Grok, Microsoft Copilot,
-  Poe, Mistral Le Chat); switch to all-sites mode at any time and manage one unified rules list
-  for the built-in sites and any website you add.
-- **Human-readable, exportable config** — export your rules as plain JSON you (or an AI
-  assistant) can read and keep.
-- **Never grows your files** — if the optimized copy is not smaller, it is discarded and the
-  original is used.
-- **No cloud processing** — files stay on your Mac.
-- **macOS installer** — a user-level install with no password. The Beta.3 DMG is signed with a
-  Developer ID and notarized/stapled by Apple, so Gatekeeper accepts it.
+- **Image optimization:** HEIC, JPEG, and TIFF are optimized into smaller JPEG or PNG copies.
+- **Video optimization:** MP4, MOV, and M4V are compressed locally using H.264 + AAC.
+- **Browser upload optimization:** Intercepts and shrinks uploads on supported AI websites.
+- **AI-agent preparation:** CLI tools output machine-readable JSON for agents to use optimized files.
+- **Local processing:** Everything runs on your Mac. No media is sent to our servers.
+- **Source preservation:** Original files are never modified or deleted by default.
+- **Smart and Maximum compression:** 'Smart' mode for safe defaults, 'Maximum' for aggressive savings (requires Pro).
+- **Metadata control:** Explicitly remove all metadata with `--metadata remove-all` (requires Pro).
 
-Sources are never modified or overwritten.
+## Browser extension
 
-## Control what gets optimized
+After installing with Homebrew, you must manually load the extension:
 
-Open the extension popup to flip the single **Smaller** on/off switch and see the effective
-state for the current site. Open **Settings** for the full controls:
+1. Run `smaller setup` to prepare the extension files.
+2. Run `smaller extension path` to reveal the exact folder to use (`~/Applications/Smaller Please Extension`).
+3. Open `chrome://extensions` in Google Chrome.
+4. Enable **Developer mode** (top-right).
+5. Click **Load unpacked** and select the folder from step 2.
 
-- Toggle optimization on/off everywhere with the **Smaller** switch — your mode and website
-  rules are kept.
-- Choose a **website mode**: optimize on all websites, or only on selected websites.
-- Use the **Website Rules** list — the **Built-in** AI websites (ChatGPT, Claude, Gemini,
-  DeepSeek, Perplexity, Grok, Microsoft Copilot, Poe, Mistral Le Chat) and your **Custom**
-  websites — or add any website.
-- **Export** your configuration as readable JSON, and **import** it back (or paste one in).
+**Supported Sites:**
+The extension runs by default on exactly three built-in AI websites:
+- **ChatGPT** (`chatgpt.com`): Click and drag-and-drop supported.
+- **Gemini** (`gemini.google.com`): Click supported. Drag-and-drop is **passthrough** (the original file attaches unchanged and is not optimized).
+- **DeepSeek** (`chat.deepseek.com`): Click and drag-and-drop supported.
 
-Smaller has broad access to websites so you can add a custom site without a new permission
-prompt each time. **By default it runs only on the built-in AI allowlist** ("Only selected
-websites"); you can switch to "Optimize on all websites" at any time. The switch always wins,
-then a website rule, then the mode, so a website that is not listed is not optimized in
-allowlist mode. It only looks at the file you pick, drop, or paste.
+## CLI
 
-Rows for sites whose upload path has not yet been live-accepted are marked **"Not verified"** —
-that reflects Smaller's tested support for the site, and is **never** a permission limitation. A
-row can instead carry a **`passthrough`** capability: that flow is verified to upload the original
-file unchanged, an accepted limitation rather than a failure. **On Gemini, click uploads are
-optimized, while drag/drop uploads the original file unchanged and is not optimized.** The
-fresh-install default is the built-in AI allowlist, but an existing configuration is never
-silently changed. A dropped file is only reported as optimized after it is handed to the site's
-own upload path; if that handoff cannot be confirmed, the original file is uploaded instead. See
-[`docs/EXTENSION_SETTINGS.md`](docs/EXTENSION_SETTINGS.md).
+The `smaller` command helps you optimize media and check system health.
 
-## Privacy highlights
+```bash
+smaller optimize ./photo.jpg
+smaller optimize ./clip.mov
+smaller prepare ./photo.jpg --json
+smaller prepare-batch ./input --json
+smaller doctor
+```
 
-- Your images and videos are processed **on your Mac**. Nothing is uploaded to a
-  Smaller Please server.
-- The original file is never modified; Smaller Please only writes optimized copies.
-- No account, no telemetry, no tracking, and no reading of your chat or browsing activity.
-- Read the full statement in [`docs/PRIVACY.md`](docs/PRIVACY.md).
+- `optimize`: The single command for optimizing an image, video, or directory.
+- `prepare` / `prepare-batch`: Emits a frozen JSON plan containing `use_path`. `use_path` is the exact file you should upload or use.
 
-## Download and install
+## Use with AI agents
 
-1. Open the [Beta.3 releases page](https://github.com/wberry9813/Smaller-Please/releases) and
-   download the installer for your Mac:
-   `Smaller-Please-Installer-0.1.0-beta.3-macos-arm64.dmg`.
-2. Open `Smaller Please Installer.app` and click **Install**, then follow the step-by-step guide
-   in [`docs/DOWNLOAD.md`](docs/DOWNLOAD.md) to add the Chrome extension.
+Smaller, Please provides a first-class public Agent Skill for use with OpenCode and Codex (verified discovery) and Claude Code (compatible via the shared Agent Skills standard).
+AI agents must install the `smaller` CLI and follow strict guidelines:
+- Prefer `smaller prepare` or `smaller prepare-batch --json` to get the optimization plan.
+- Always consume the exact `use_path` returned in the JSON plan.
+- Never invent a derivative output path.
+- Source files are preserved; never modify or delete them.
+- Never silently substitute another compressor.
+- Uploads are subject to the environment's actual capability (do not claim an upload happened unless the environment actually performed it).
 
-This is a Beta release. The install guide covers the one-time Chrome setup (Chrome requires
-**Developer mode → Load unpacked**, which cannot be automated) and what to expect.
+Read the Agent Skill instructions:
+- [Skill Definition](skills/smaller-please/SKILL.md)
+- [Workflows](skills/smaller-please/workflows.md)
+- [Command Reference](skills/smaller-please/reference.md)
+- [Agent Skill Guide](docs/AGENT_SKILL.md)
 
-## Requirements
+## Free and Pro
 
-- macOS 12 or later on Apple Silicon (arm64).
-- Google Chrome for the browser integration.
+- **Free:** Includes `smart` mode optimization, browser optimization, and default metadata behavior.
+- **Pro:** Adds `maximum` compression mode and metadata removal (`remove-all`) via a locally verified licence key. Purchasing is not yet generally available.
 
-## Beta status and known limitations
+## Privacy
 
-- **Beta software** — features and behavior may change before a stable release.
-- **Chrome Web Store listing is Planned.** Adding the extension requires the manual
-  **Developer mode → Load unpacked** step.
-- A **public Homebrew tap is Planned**; there is no public tap today.
-- **Automatic updates are Planned.** Update by running the newer installer and reloading the
-  extension; see [`docs/update.md`](docs/update.md).
-- A **public Media Pack download service is Planned**; the Media Pack is a separate local
-  artifact only.
-- **Intel (`x86_64`) Macs and Windows are not supported yet.**
-- Some website upload paths are not yet live-verified, and a few are verified `passthrough`
-  (the original is uploaded unchanged). These are labeled honestly in the extension; see
-  [`docs/EXTENSION_SETTINGS.md`](docs/EXTENSION_SETTINGS.md).
+Your media processing is strictly local. Smaller, Please does not upload your images or videos to any media-processing server. Read the [Canonical Privacy Policy](PRIVACY.md).
 
-## Documentation
+## Update
 
-- [Download and install](docs/DOWNLOAD.md)
-- [Install on macOS](docs/install/macos.md) — installer and [Homebrew (Planned)](docs/install/homebrew.md)
-- [Extension settings and website rules](docs/EXTENSION_SETTINGS.md)
-- [CLI reference](docs/CLI.md)
-- [Updating](docs/update.md) · [Uninstalling](docs/uninstall.md)
-- [Privacy](docs/PRIVACY.md) · [Privacy policy page](PRIVACY.md)
-- [Troubleshooting](docs/troubleshooting/browser-extension.md)
+Update through Homebrew and then refresh your local setup:
+
+```bash
+brew update
+brew upgrade smaller-please
+smaller setup
+smaller doctor
+```
+After upgrading, go to `chrome://extensions` and click the refresh/reload icon on the Smaller, Please extension card.
+
+## Uninstall
+
+```bash
+brew uninstall smaller-please
+smaller uninstall
+```
+See [Uninstall Guide](docs/uninstall.md) for details on what is kept by default.
+
+## Troubleshooting
+
+See the troubleshooting guides for the
+[browser extension](docs/troubleshooting/browser-extension.md),
+[native host](docs/troubleshooting/native-host.md),
+[core](docs/troubleshooting/core.md),
+[storage](docs/troubleshooting/storage.md), and
+[media engine](docs/troubleshooting/media-engine.md).
 
 ## License
 
-MIT. See [`LICENSE`](LICENSE). Third-party components and licenses are listed in
-[`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+MIT. See [`LICENSE`](LICENSE) and [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md).
+
+## Website / Releases
+
+- **Website:** [https://smaller-please.inchmirror.studio](https://smaller-please.inchmirror.studio)
+- **Releases:** [https://github.com/wberry9813/Smaller-Please/releases](https://github.com/wberry9813/Smaller-Please/releases)

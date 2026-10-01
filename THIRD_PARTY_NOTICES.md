@@ -57,7 +57,7 @@ The artifact records the source URL, tag, SHA-256, signature status, and toolcha
 distributor of the Media Pack; the source is also publicly available at the FFmpeg release URL
 above.
 
-Nothing in Smaller Please's distribution may restrict modifying, running, or relinking the
+Nothing in Smaller, Please's distribution may restrict modifying, running, or relinking the
 LGPL Media Pack, and the Media Pack must remain replaceable by the user.
 
 ### Independent JPEG Group notice
@@ -78,7 +78,7 @@ The Media Pack links only against macOS system libraries and frameworks:
 - `/usr/lib/libz.1.dylib` (zlib)
 - `VideoToolbox`, `CoreMedia`, `CoreVideo`, `CoreFoundation`, `CoreServices` frameworks
 
-These are part of macOS and are **not** redistributed by Smaller Please. VideoToolbox is
+These are part of macOS and are **not** redistributed by Smaller, Please. VideoToolbox is
 Apple's H.264 implementation; using it introduces no GPL component, but framework availability
 is not proof of H.264 patent rights.
 
@@ -86,5 +86,5 @@ is not proof of H.264 patent rights.
 
 Copyright compliance does not settle H.264/AAC patent-pool licensing. The FFmpeg project's own
 legal page warns that commercial use of patented standards can attract licensing fees. Review
-the H.264/AAC patent position with qualified counsel before monetization. Smaller Please does
+the H.264/AAC patent position with qualified counsel before monetization. Smaller, Please does
 not grant any patent license.

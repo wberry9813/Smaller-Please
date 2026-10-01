@@ -91,7 +91,7 @@ visible runtime plus the marker/state and never touches source files.
 ## CSP error / a page appears stuck
 
 Extension pages run under `script-src 'self'`; all script lives in bundled `dist/*.js` files.
-A CSP violation usually means a stale build. Re-run the installer or `smaller repair`, then
+A CSP violation usually means a stale build. Re-run `smaller repair` or upgrade via Homebrew, then
 reload the extension.
 
 ## Popup shows "Core settings unavailable"
@@ -122,7 +122,7 @@ them with:
 smaller repair
 ```
 
-Then reload the extension and hard-refresh the site. If it persists, re-run the latest installer
+Then reload the extension and hard-refresh the site. If it persists, run `brew upgrade smaller-please`
 so Core, the extension bundle, and the launcher come from the same release.
 
 ## Language does not change in an open website tab
@@ -164,5 +164,4 @@ Then open `chrome://extensions` and click **Remove** on the unpacked entry — C
 allow a program to remove an unpacked extension from the real profile, so that step is always
 manual (and it is the only way to clear the `contextslim_*` `chrome.storage`). `extension
 uninstall` never touches config, the store, `chrome.storage`, or the Chrome profile. See
-[`../uninstall.md`](../uninstall.md) for the full sequence, the installer GUI sheet, and the
-Homebrew boundary.
+[`../uninstall.md`](../uninstall.md) for the full sequence and the Homebrew boundary.

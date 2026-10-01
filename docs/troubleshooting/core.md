@@ -8,7 +8,7 @@ smaller --version
 smaller doctor --json
 ```
 
-Expected: the binary resolves on `PATH`, prints `smaller 0.1.0`, and `doctor` reports
+Expected: the binary resolves on `PATH`, prints a version such as `smaller 0.1.0-beta.6`, and `doctor` reports
 `overall_status` with the six checks (`core`, `config`, `storage`, `media_engine`,
 `native_host`, `browser_integration`). The legacy `contextslim` command is still installed and
 works as an alias.
@@ -20,14 +20,11 @@ works as an alias.
 
 ## `command not found: smaller`
 
-The CLI is not on `PATH`. If you installed with the app, the managed binaries live at
-`~/Library/Application Support/SmallerPlease/bin/` (`smaller` and the `contextslim` alias). Add
-that directory to your `PATH`, or run the binary by full path, then re-run.
+The CLI is not on `PATH`. If you installed via Homebrew, ensure your Homebrew bin directory (e.g. `/opt/homebrew/bin`) is in your shell `PATH`. Re-run the binary by full path if necessary, then fix your shell profile.
 
 ## A new flag or subcommand is rejected
 
-The installed CLI is older than the release you are following. Re-run the latest installer, then
-`smaller repair` and reload the extension. See [`../update.md`](../update.md).
+The installed CLI is older than the release you are following. Upgrade via Homebrew (`brew upgrade smaller-please`), then run `smaller repair` and reload the extension. See [`../update.md`](../update.md).
 
 ## Config problems
 
@@ -60,8 +57,8 @@ original tool keys and adds the health model (`schema_version: 1`):
   "schema_version": 1,
   "overall_status": "warning",
   "brand": "Smaller Please",
-  "core_version": "0.1.0",
-  "versions": { "core_version": "0.1.0", "native_protocol_version": 1,
+  "core_version": "0.1.0-beta.6",
+  "versions": { "core_version": "0.1.0-beta.6", "native_protocol_version": 1,
                 "bridge_schema_version": 1, "extension_version": null,
                 "media_pack_version": null },
   "checks": [
