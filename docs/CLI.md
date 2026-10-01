@@ -53,6 +53,18 @@ Prepares several files or directories, returning one JSON document. Each item is
 - Never invent a derivative path.
 - Source files must remain preserved.
 
+## Bundled Agent Skill
+
+`smaller get skills` prints the instruction an AI agent needs to install the bundled Agent Skill,
+along with the Skill files that ship inside the installation. It is read-only: it never installs
+or modifies any AI tool directory or configuration, and it never detects an AI tool.
+
+```bash
+smaller get skills
+```
+
+Give the output to your AI agent; the agent configures the Skill for its own environment.
+
 ## System Health & Setup
 
 - `smaller doctor [--json]`: Shows backend availability and checks installation health.

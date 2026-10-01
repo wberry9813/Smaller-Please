@@ -61,20 +61,23 @@ smaller doctor
 
 ## Use with AI agents
 
-Smaller, Please provides a first-class public Agent Skill for use with OpenCode and Codex (verified discovery) and Claude Code (compatible via the shared Agent Skills standard).
-AI agents must install the `smaller` CLI and follow strict guidelines:
-- Prefer `smaller prepare` or `smaller prepare-batch --json` to get the optimization plan.
-- Always consume the exact `use_path` returned in the JSON plan.
-- Never invent a derivative output path.
-- Source files are preserved; never modify or delete them.
-- Never silently substitute another compressor.
-- Uploads are subject to the environment's actual capability (do not claim an upload happened unless the environment actually performed it).
+Smaller, Please bundles a public Agent Skill for AI agents. After installing, run:
 
-Read the Agent Skill instructions:
-- [Skill Definition](skills/smaller-please/SKILL.md)
-- [Workflows](skills/smaller-please/workflows.md)
-- [Command Reference](skills/smaller-please/reference.md)
-- [Agent Skill Guide](docs/AGENT_SKILL.md)
+```bash
+smaller get skills
+```
+
+Copy the output and give it to your AI agent. The output contains the install instruction and the
+bundled Skill, and the agent will configure the Skill for your environment.
+
+When an agent prepares a file it must:
+
+- prefer `smaller prepare` / `smaller prepare-batch --json`;
+- use the exact `use_path` returned in the JSON plan;
+- never invent an output path;
+- never delete or overwrite the original source;
+- never silently substitute another compressor;
+- not claim an upload happened unless the environment actually performed it.
 
 ## Free and Pro
 

@@ -61,20 +61,22 @@ smaller doctor
 
 ## 与 AI 代理一起使用
 
-Smaller, Please 为 OpenCode 和 Codex（已验证发现功能）以及 Claude Code（通过共享的 Agent Skills 标准兼容）提供了一流的公开代理技能 (Agent Skill)。
-AI 代理必须安装 `smaller` CLI 并遵循严格指南：
-- 首选 `smaller prepare` 或 `smaller prepare-batch --json` 来获取优化计划。
-- 始终使用 JSON 计划中返回的确切 `use_path`。
-- 绝不自行构造派生的输出路径。
-- 保留源文件；绝不修改或删除它们。
-- 绝不静默替换为其他压缩工具。
-- 上传行为取决于环境的实际能力（除非环境真正执行了外部上传动作，否则不要声称已完成上传）。
+Smaller, Please 内置了面向 AI 代理的公开 Agent Skill。安装后运行：
 
-阅读代理技能指南：
-- [技能定义](skills/smaller-please/SKILL.md)
-- [工作流](skills/smaller-please/workflows.md)
-- [命令参考](skills/smaller-please/reference.md)
-- [代理技能指南](docs/AGENT_SKILL.md)
+```bash
+smaller get skills
+```
+
+将输出内容复制给你的 AI 代理。输出中包含安装指令和内置 Skill，代理会根据当前环境完成 Skill 配置。
+
+代理在准备文件时必须：
+
+- 优先使用 `smaller prepare` / `smaller prepare-batch --json`；
+- 使用 JSON 计划中返回的确切 `use_path`；
+- 绝不自行构造输出路径；
+- 绝不删除或覆盖原始源文件；
+- 绝不静默替换为其他压缩工具；
+- 除非环境真正执行了上传，否则不要声称已完成上传。
 
 ## Free 与 Pro
 

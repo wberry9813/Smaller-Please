@@ -17,7 +17,17 @@ The Skill is built on the shared Agent Skills open standard.
 
 **Important Distinction:** You must have the `smaller` CLI installed via Homebrew to use the tool. Installing the Skill merely teaches the agent *how* to use the CLI; it does not install the `smaller` binary itself.
 
-To install the Skill for your agents, run the following commands:
+The primary way to configure your AI agent is to use the built-in CLI command. After installing Smaller, Please via Homebrew, run:
+
+```bash
+smaller get skills
+```
+
+Copy the output and give it to your AI agent. The output contains the install instruction and the bundled Skill, and the agent will configure the Skill for your environment.
+
+### Manual Fallback Installation
+
+If your agent requires manual installation, you can install the Skill for your agents by running the following commands:
 
 ```bash
 git clone https://github.com/wberry9813/Smaller-Please.git
