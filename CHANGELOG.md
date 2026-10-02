@@ -3,6 +3,38 @@
 Notable changes to **Smaller, Please** (formerly ContextSlim). The product/Core version is the
 release version; `contextslim` remains only a compatibility alias.
 
+## [0.1.0-beta.7] - 2026-10-02
+
+The first public release to bundle the Smaller, Please Agent Skill inside the Homebrew install.
+Distributed through Homebrew; unsigned and DMG-free.
+
+### Added
+
+- **Bundled Agent Skill** — the canonical `skills/smaller-please/` bundle (`SKILL.md`,
+  `workflows.md`, `reference.md`) now ships inside the release archive at
+  `share/smaller-please/skills/smaller-please/` and is installed by the Homebrew formula, so users
+  no longer need to clone the GitHub repository to get the Skill.
+- **`smaller get skills`** — a new read-only command that resolves the bundled Skill relative to
+  the installed executable (no hardcoded prefix) and prints the AI-agent installation instruction
+  together with the `SKILL.md` content. It never writes to `~/.agents`, `~/.claude`, or any other
+  AI-tool configuration directory, and never detects or installs an AI tool.
+
+### Changed
+
+- **Docs / website copy** — the public READMEs lead with `smaller get skills`, and the website
+  install section now presents the simplified Skills-tab copy (website source only; see Known
+  limitations).
+
+### Known limitations / Planned
+
+- The website Skills-copy update is **source-only / not deployed** at the time of this release.
+- Claude Code live Skill acceptance remains **unverified** (the shared Agent Skills standard is
+  documented as compatible).
+- Paddle Live purchasing is not yet fully live pending merchant/domain verification; no real-card
+  Production charge has been tested — only the 100% discount test path has been observed.
+- Still **Planned**: automatic updates, the Chrome Web Store listing, and a public Media Pack
+  download service. Intel (`x86_64`) and Windows are deferred; the Homebrew formula refuses Intel.
+
 ## [0.1.0-beta.6] - 2026-10-01
 
 The first public beta whose release build includes the Production licence verification trust root.
