@@ -2,6 +2,10 @@
 
 The **Smaller, Please** Agent Skill teaches autonomous AI coding agents how to locally optimize images and videos before consuming them or uploading them to AI tools.
 
+## When the Skill triggers
+
+Explicit intent or explicit user policy triggers Smaller, Please; mere media presence does not. Trigger when the user explicitly asks for Smaller, Please; explicitly asks to compress, reduce, shrink, or prepare a media file; or a USER-OWNED project/workspace/agent rule requires it. Do **not** trigger merely because an image or video exists, a local path is referenced, or media is about to be inspected, analyzed, or uploaded. For AI preparation the Skill uses `smaller prepare` / `smaller prepare-batch`, never `smaller optimize`. The Browser Extension is a separate, explicitly-enabled automatic upload surface; installing the Skill does not authorize automatic interception of media workflows.
+
 ## Why Use the Agent Skill?
 When you ask an agent like OpenCode or Claude Code to "read this screenshot" or "prepare this video for ChatGPT," the agent might natively try to upload massive source files, consuming unnecessary context window budget, network bandwidth, and time. 
 

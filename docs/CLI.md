@@ -18,7 +18,7 @@ smaller optimize [OPTIONS] <INPUT>
 - `--quality`: Adjust the quality setting.
 - `--crf`: Adjust the CRF for video encoding.
 - `--min-savings`: The minimum percentage size reduction required to keep the optimized file.
-- `--output`: Define a specific output directory. Default is `.contextslim/` next to the source.
+- `--output`: Define a specific output directory. Default is the managed store's `<bridge_store_dir>/derivatives/optimize/`; an explicit value overrides it. Source-adjacent `.contextslim/` is legacy behavior and is not written by default.
 - `--force`: Bypass the minimum source-size gate (a CLI-only opt-in for `optimize`).
 - `--dry-run`: Do not write any files; simulate the process.
 - `--json`: Output machine-readable JSON format instead of human-readable text.
@@ -29,6 +29,8 @@ smaller optimize [OPTIONS] <INPUT>
 ## AI Agent Commands
 
 The `prepare` commands emit a frozen JSON plan with the `use_path` field and a `status` field. The output is machine-readable on stdout, with diagnostics printed to stderr. 
+
+**Trigger responsibility boundary.** Explicit intent or explicit user policy triggers Smaller, Please; mere media presence does not. Agents preparing media for AI use `smaller prepare` / `smaller prepare-batch`; `smaller optimize` is the human/general surface. An optional, USER-OWNED project/workspace rule may require Smaller, Please (Smaller never installs or mutates it). The Browser Extension is a separate, explicitly-enabled automatic upload surface; installing the Agent Skill does not authorize automatic interception.
 
 ```bash
 smaller prepare [OPTIONS] <PATH>

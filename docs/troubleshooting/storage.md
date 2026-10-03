@@ -71,11 +71,17 @@ If the native bridge reports `store_unavailable`, the host stays alive and store
 operations return a framed error; fix `bridge_store_dir` with
 `smaller config set store-dir <path>` or run `smaller clean --dry-run` to inspect.
 
-## Why `.contextslim` is special
+## Managed output and legacy `.contextslim`
 
-The CLI's default output directory is `.contextslim/` beside a source. It is generated output
-and is **never** scanned as input by `batch`/`prepare-batch`. Cleaning it is a manual
-filesystem action; `smaller clean` targets the managed store, not arbitrary `.contextslim`
+`smaller optimize` defaults derivatives to `<bridge_store_dir>/derivatives/optimize/`, and
+`smaller prepare` / `prepare-batch` default derivatives to `<bridge_store_dir>/derivatives/` with
+cache under `<bridge_store_dir>/cache/`; an explicit `--output` overrides only the derivative
+directory.
+
+A source-adjacent `.contextslim/` is legacy behavior from older releases: it is generated output
+and is **never** scanned as input, it is no longer written by default, and it is never crawled,
+migrated, or deleted automatically. Cleaning a legacy `.contextslim/` is a manual filesystem
+action; `smaller clean` targets the marker-validated managed store, not arbitrary `.contextslim`
 directories.
 
 ## Uninstall
