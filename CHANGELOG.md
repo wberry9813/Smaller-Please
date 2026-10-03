@@ -29,7 +29,9 @@ consumed by AI agents or uploaded in the browser, without modifying the original
 - **Bundled Agent Skill** inside the Homebrew install
   (`share/smaller-please/skills/smaller-please/`) plus the read-only **`smaller get skills`**
   command, which surfaces the Skill and its install instruction without writing to any AI-tool
-  directory.
+  directory. The corrected install/update lifecycle is documented: install the Skill via a stable
+  symlink so `brew upgrade smaller-please` keeps it current; copying is a fallback that requires
+  re-install after a future upgrade.
 - **Free / Pro capability split** — Free covers the `smart` pipeline; Pro unlocks `maximum`
   compression and explicit metadata `remove-all`, resolved locally from a stored licence.
 - **Production licence verification** — licences are verified offline on-device against the

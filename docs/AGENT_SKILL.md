@@ -23,23 +23,31 @@ The primary way to configure your AI agent is to use the built-in CLI command. A
 smaller get skills
 ```
 
-Copy the output and give it to your AI agent. The output contains the install instruction and the bundled Skill, and the agent will configure the Skill for your environment.
+Give the output to your AI agent. It contains the bundled Skill, its stable path, and the install guidance. The bundled Skill that ships with the Homebrew install is the **source of truth**.
 
-### Manual Fallback Installation
+### Preferred installation: a stable symlink
 
-If your agent requires manual installation, you can install the Skill for your agents by running the following commands:
+Point your agent's skills directory at the **bundled stable path** (the exact path is printed by `smaller get skills`), not at a versioned Cellar path:
 
 ```bash
-git clone https://github.com/wberry9813/Smaller-Please.git
 mkdir -p ~/.agents/skills
-cp -R Smaller-Please/skills/smaller-please ~/.agents/skills/smaller-please
-
-# For Claude Code specifically:
-mkdir -p ~/.claude/skills
-cp -R Smaller-Please/skills/smaller-please ~/.claude/skills/smaller-please
+ln -sfn "$(brew --prefix)/share/smaller-please/skills/smaller-please" ~/.agents/skills/smaller-please
 ```
 
-(A symlink to the cloned `skills/smaller-please` folder is also acceptable where the agent ecosystem supports symlinked skill folders.)
+Because the target is the stable Homebrew share path, `brew upgrade smaller-please` updates the bundled Skill and the **same symlink serves the new version automatically** — no re-install needed; a newly started or reloaded agent reads the updated Skill. Never symlink to a versioned Cellar path (for example `/opt/homebrew/Cellar/smaller-please/<version>/...`); it breaks after an upgrade.
+
+If a previously **copied** Smaller, Please Skill already exists at `~/.agents/skills/smaller-please`, replace only that Smaller, Please destination with the symlink. Do not remove unrelated skills, and do not delete the bundled source.
+
+Other ecosystems may add a secondary location that points at the canonical `~/.agents` Skill, for example:
+
+```bash
+mkdir -p ~/.claude/skills
+ln -sfn ~/.agents/skills/smaller-please ~/.claude/skills/smaller-please
+```
+
+### Copy fallback
+
+If your agent ecosystem cannot use symlinked skill directories, copy the Skill files from the bundled path instead. A copied Skill is a **snapshot**: it will not track upgrades, so re-run the copy after a future `brew upgrade smaller-please`.
 
 ### Verification
 You can verify the CLI is healthy and ready for the agent by running:
@@ -63,9 +71,13 @@ The JSON document includes a `status` (such as `optimized`, `skipped`, or `fallb
 - Agents will not silently substitute another compression tool when Smaller, Please is requested.
 
 ## Updating or Removing the Skill
-To update the Skill, just repeat the installation copy command with a freshly cloned repository.
-To remove the Skill, delete the folder:
+
+- **Symlink install (preferred):** `brew upgrade smaller-please` updates the bundled Skill, and the symlink serves it automatically on the next agent start/reload — no re-install step.
+- **Copy install (fallback):** re-run the copy after each `brew upgrade smaller-please`, because a copied Skill is a snapshot.
+
+To remove the Skill, delete only the Smaller, Please destination (leave unrelated skills and the bundled source untouched):
+
 ```bash
-rm -rf ~/.agents/skills/smaller-please
-rm -rf ~/.claude/skills/smaller-please
+rm -f ~/.agents/skills/smaller-please   # use `rm -rf` if you installed a copy instead of a symlink
+rm -f ~/.claude/skills/smaller-please
 ```
