@@ -82,7 +82,7 @@ When an agent prepares a file it must:
 ## Free and Pro
 
 - **Free:** Includes `smart` mode optimization, browser optimization, and default metadata behavior.
-- **Pro:** Adds `maximum` compression mode and metadata removal (`remove-all`) via a locally verified licence key. Purchasing is not yet generally available.
+- **Pro:** Adds `maximum` compression mode and metadata removal (`remove-all`) via a locally verified licence key. Pro is available as a one-time purchase through the production website checkout for **$3**; the licence is delivered by email after successful production fulfilment.
 
 ## Privacy
 
@@ -102,9 +102,12 @@ After upgrading, go to `chrome://extensions` and click the refresh/reload icon o
 
 ## Uninstall
 
+Run `smaller uninstall` first, then remove the Homebrew package last — Homebrew removal removes the
+CLI itself:
+
 ```bash
-brew uninstall smaller-please
 smaller uninstall
+brew uninstall smaller-please
 ```
 See [Uninstall Guide](docs/uninstall.md) for details on what is kept by default.
 

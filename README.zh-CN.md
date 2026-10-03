@@ -81,7 +81,7 @@ smaller get skills
 ## Free 与 Pro
 
 - **Free（免费版）：** 包含 `smart` 模式优化、浏览器优化以及默认元数据行为。
-- **Pro（专业版）：** 通过本地验证的许可证密钥，增加 `maximum` 压缩模式和元数据移除（`remove-all`）功能。购买通道目前尚未普遍开放。
+- **Pro（专业版）：** 通过本地验证的许可证密钥，增加 `maximum` 压缩模式和元数据移除（`remove-all`）功能。Pro 可通过生产环境网站结账一次性购买，当前价格为 **¥6**；许可证会在生产环境成功履约后通过邮件发送。
 
 ## 隐私
 
@@ -101,9 +101,11 @@ smaller doctor
 
 ## 卸载
 
+请先运行 `smaller uninstall`，最后再移除 Homebrew 包（移除 Homebrew 会一并移除 CLI 本身）：
+
 ```bash
-brew uninstall smaller-please
 smaller uninstall
+brew uninstall smaller-please
 ```
 有关默认保留哪些内容的详细信息，请参阅[卸载指南](docs/uninstall.md)。
 
