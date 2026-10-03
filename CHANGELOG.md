@@ -3,6 +3,55 @@
 Notable changes to **Smaller, Please** (formerly ContextSlim). The product/Core version is the
 release version; `contextslim` remains only a compatibility alias.
 
+## [0.1.0] - 2026-10-03
+
+**The first stable release of Smaller, Please.** It consolidates the beta line into the supported
+`0.1.0` product: a local-first media optimizer that shrinks images and video before they are
+consumed by AI agents or uploaded in the browser, without modifying the original file.
+
+### Shipped
+
+- **Local image optimization** and **local video optimization** through the single public
+  `smaller optimize <input>` command (image, video, or directory); `--mode smart` is the default
+  safety pipeline and never keeps a derivative larger than its source.
+- **Browser upload optimization** on the currently supported sites and paths: **ChatGPT**,
+  **Gemini**, and **DeepSeek**. An upload is replaced with an optimized derivative only after a
+  confirmed handoff, and fails open to the original otherwise. **Gemini drag/drop is
+  passthrough** — the original attaches with no optimization claim.
+- **Source preservation** — originals are never modified, overwritten, or deleted; optimization
+  writes derivatives only, and a below-threshold source is skipped with the original used.
+- **Managed Core store / cache** at `~/.contextslim-bridge/store`, with marker-validated
+  `derivatives/`, `cache/`, and `tmp/`; `smaller clean` removes only marker-validated managed
+  content and the bridge-owned `inbox/`.
+- **`smaller prepare` / `prepare-batch`** — frozen JSON output with an authoritative `use_path` for
+  agents; derivatives and cache default to the managed store rather than a source-adjacent
+  `.contextslim/` directory.
+- **Bundled Agent Skill** inside the Homebrew install
+  (`share/smaller-please/skills/smaller-please/`) plus the read-only **`smaller get skills`**
+  command, which surfaces the Skill and its install instruction without writing to any AI-tool
+  directory.
+- **Free / Pro capability split** — Free covers the `smart` pipeline; Pro unlocks `maximum`
+  compression and explicit metadata `remove-all`, resolved locally from a stored licence.
+- **Production licence verification** — licences are verified offline on-device against the
+  shipped Production trust root; a Pro licence is purchasable and activates locally, and unknown or
+  unrecognized installs fail closed to Free. Media content is never uploaded to a Smaller, Please
+  server.
+
+### Installation / platform
+
+- **Homebrew is the supported installation channel**:
+  `brew tap wberry9813/smaller-please` then `brew install smaller-please`.
+- **macOS 12+ on Apple Silicon (`arm64`) only**; the Homebrew formula refuses Intel.
+- Installing the **browser extension is always manual**: Chrome **Developer mode → Load unpacked**
+  from the visible `~/Applications/Smaller Please Extension` path staged by `smaller setup` /
+  `smaller extension`.
+
+### Not yet available
+
+- Automatic updates, the **Chrome Web Store** listing, **Intel (`x86_64`)**, and **Windows** are
+  not shipped. There is no signed DMG/installer: the earlier DMG is historical and no longer
+  produced.
+
 ## [0.1.0-beta.8] - 2026-10-03
 
 Corrects agent-facing `prepare` output placement and tightens the bundled Agent Skill, following
