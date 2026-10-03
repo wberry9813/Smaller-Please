@@ -3,6 +3,38 @@
 Notable changes to **Smaller, Please** (formerly ContextSlim). The product/Core version is the
 release version; `contextslim` remains only a compatibility alias.
 
+## [0.1.0-beta.8] - 2026-10-03
+
+Corrects agent-facing `prepare` output placement and tightens the bundled Agent Skill, following
+the first real-world Beta.7 Skill acceptance.
+
+### Changed
+
+- **Agent `prepare` / `prepare-batch` derivatives now default to the Core managed store** — optimized
+  outputs are written to `<bridge_store_dir>/derivatives/` instead of a source-adjacent
+  `.contextslim/` directory. `smaller optimize` output semantics are unchanged.
+- **`prepare` cache/dedupe now lives under the managed store** — cache and dedupe records are stored
+  in the managed store's `cache/` rather than beside the sources.
+- **`--output` is preserved and overrides the derivative directory only** — an explicit
+  `--output <dir>` keeps its existing behavior (it overrides where optimized derivatives are
+  written); the cache remains in the managed store.
+- **Bundled Agent Skill input-resolution contract** — the Skill now defines a safe order for
+  resolving an attachment input (authoritative local filesystem path → standard attachment/file API
+  → one-time byte materialization → ask the user) and forbids discovering attachments by crawling
+  HOME, unrelated folders, application/browser/agent caches, private databases, or broad temp
+  directories.
+- **Skill success fast path** — after a successful `smaller prepare ... --json`, the Skill treats
+  the Core JSON and its exact `use_path` as authoritative and avoids redundant post-success
+  diagnostics or verification probes.
+- **Skill/docs distinguish config from managed-store output** — the macOS config location
+  (`~/Library/Application Support/SmallerPlease/config.json`) is now documented distinctly from the
+  managed-store derivative/cache locations, so agents do not confuse configuration with output.
+
+### Known limitations / Planned
+
+- Still **Planned**: automatic updates, the Chrome Web Store listing, and a public Media Pack
+  download service. Intel (`x86_64`) and Windows are deferred; the Homebrew formula refuses Intel.
+
 ## [0.1.0-beta.7] - 2026-10-02
 
 The first public release to bundle the Smaller, Please Agent Skill inside the Homebrew install.
